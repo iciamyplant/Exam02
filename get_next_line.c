@@ -29,10 +29,11 @@ static int		ft_get_that_line(char **line, char *buff, int fctr, int len)
 	return (1);
 }
 
-int				get_next_line(int fd, char **line)
+int				get_next_line(char **line)
 {
 	static char	buff[BUFFER_SIZE + 1];
 	int			len;
+	int fd = 0;
 	int			fctr;
 	int			ret;
 
@@ -67,7 +68,7 @@ int		main()
 
 	fd = open("test", O_RDONLY);
 	ret = 1;
-	while (i < 3)
+	while (ret > 0)
 	{
 		ret = get_next_line(fd, &str);
 		printf("%s\n", str);
